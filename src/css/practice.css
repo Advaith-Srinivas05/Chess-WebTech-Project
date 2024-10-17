@@ -1,0 +1,29 @@
+html, body{
+    height: 99%;
+}
+
+.Btn{
+    width: 300px;
+    height: 75px;
+    border-radius: 5pt;
+    font-size: 22px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: 2px solid black;
+}
+
+#startBtn{
+    background-color: #81b64c;
+}
+
+#startBtn:hover{
+    background-color: #94c25a;
+}
+
+#clearBtn{
+    background-color: #3c3b39;
+}
+
+#clearBtn:hover{
+    background-color: #434240;
+}
