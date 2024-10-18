@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 import Chess from 'chess.js';
-import Engine from './engine'; // Import your Engine class
-import './css/PlayComputer.css'; // Import the CSS file
+import Engine from './engine';
+import './css/PlayComputer.css';
 
 const PlayVsStockfish = () => {
   const levels = {

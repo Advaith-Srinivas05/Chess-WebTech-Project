@@ -24,13 +24,12 @@ export default function PlayRandomMove() {
     const move = makeAMove({
       from: sourceSquare,
       to: targetSquare,
-      // Do not set promotion here; let the library handle it automatically
     });
 
     // Illegal move
     if (move === null) return false;
 
-    // Send the position to Stockfish or any other engine if you're integrating that later
+    // Send the position to Stockfish (can integrate that later)
     if (game.in_checkmate()) {
       console.log("Checkmate!");
     }

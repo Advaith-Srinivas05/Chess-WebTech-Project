@@ -1,4 +1,3 @@
-// src/Engine.js
 class Engine {
     constructor() {
       this.stockfish = new Worker("./stockfish.js");

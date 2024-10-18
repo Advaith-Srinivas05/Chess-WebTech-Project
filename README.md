@@ -1,3 +1,6 @@
+A Chess.com clone made for our WebTech Sem 3 Project. 
+This project was done using the react-chessboard and chess.js libraries.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
