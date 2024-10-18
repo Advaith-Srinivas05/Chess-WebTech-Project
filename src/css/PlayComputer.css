@@ -29,16 +29,27 @@
 }
 
 #button-easy🤓{
-  background-color: #779952;
+  background-color: #81b64c;
+}
+
+#button-easy🤓:hover{
+  background-color: #94c25a;
 }
 
 #button-medium🧐{
   background-color: orange;
 }
 
+#button-medium🧐:hover{
+  background-color: rgb(252, 179, 43);
+}
+
 #button-hard😵{
   background-color: orangered;
+}
 
+#button-hard😵:hover{
+  background-color: rgb(252, 98, 41);
 }
 
 #button-new, #button-undo{
@@ -50,7 +61,7 @@
 }
 
 #button-easy🤓.button-active{
-  border: 10px solid darkgreen;
+  border: 10px solid green;
 }
 
 #button-medium🧐.button-active{
