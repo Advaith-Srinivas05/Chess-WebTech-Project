@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
-import { Chess } from 'chess.js';
+import Chess from 'chess.js';
 import './../css/practice.css';
 
 function Practice() {
@@ -21,8 +21,7 @@ function Practice() {
     safeGameMutate((game) => {
       move = game.move({
         from: sourceSquare,
-        to: targetSquare,
-        promotion: 'q', // auto-promote to queen
+        to: targetSquare, // auto-promote to queen
       });
     });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import RandomMoveGenerator from './../randomMove.js';
+import PlayRandomMove from '../randomMove';
 import './../css/home.css';
 
 function About() {
@@ -14,7 +14,7 @@ function About() {
 function Home(){
   return (
     <div id="main">
-        <RandomMoveGenerator/>
+        <PlayRandomMove/>
         <About/>
     </div>
   );

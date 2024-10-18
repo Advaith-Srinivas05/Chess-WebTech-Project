@@ -1,64 +1,74 @@
-import { useState } from 'react';
-import { Chessboard } from 'react-chessboard'
-import { Chess } from 'chess.js'
-              
-function RandomMoveGenerator() {
+import React, { useMemo, useState } from 'react';
+import Chess from "chess.js";
+import { Chessboard } from "react-chessboard";
+
+export default function PlayRandomMove() {
   const [game, setGame] = useState(new Chess());
-//Let's perform a function on the game state 
- 
-function safeGameMutate(modify){
-  setGame((g)=>{
-    const update = {...g}
-    modify(update)
-    return update;
-  })
-}
-//Movement of computer
-function makeRandomMove(){
-  const possibleMove = game.moves();
 
-  //exit if the game is over 
+  function makeAMove(move) {
+    const gameCopy = { ...game };
+    const result = gameCopy.move(move);
+    setGame(gameCopy);
+    return result; // null if the move was illegal, the move object if the move was legal
+  }
 
-  if(game.game_over() || game.in_draw() || possibleMove.length === 0) return;
-  //select random move
+  function makeRandomMove() {
+    const possibleMoves = game.moves();
+    if (game.game_over() || game.in_draw() || possibleMoves.length === 0)
+      return; // exit if the game is over
+    const randomIndex = Math.floor(Math.random() * possibleMoves.length);
+    makeAMove(possibleMoves[randomIndex]);
+  }
 
-  const randomIndex = Math.floor(Math.random() * possibleMove.length);
- //play random move 
- safeGameMutate((game)=>{
-  game.move(possibleMove[randomIndex]);
- })
-}
+  function onDrop(sourceSquare, targetSquare) {
+    const move = makeAMove({
+      from: sourceSquare,
+      to: targetSquare,
+      // Do not set promotion here; let the library handle it automatically
+    });
 
-//Perform an action when a piece is droped by a user
- 
-function onDrop(source,target){
-  let move = null;
-  safeGameMutate((game)=>{
-    move = game.move({
-      from:source,
-      to: target,
-      promotion:'q'
-    })
-})
- //illegal move 
- if(move== null) return false
- //valid move 
- setTimeout(makeRandomMove, 200);
- return true;
-}
+    // Illegal move
+    if (move === null) return false;
+
+    // Send the position to Stockfish or any other engine if you're integrating that later
+    if (game.in_checkmate()) {
+      console.log("Checkmate!");
+    }
+
+    setTimeout(makeRandomMove, 200);
+    return true;
+  }
+
+  const customPieces = useMemo(() => {
+    const pieces = ["wP", "wN", "wB", "wR", "wQ", "wK", "bP", "bN", "bB", "bR", "bQ", "bK"];
+    const pieceComponents = {};
+    pieces.forEach(piece => {
+      pieceComponents[piece] = ({ squareWidth }) => (
+        <div
+          style={{
+            width: squareWidth,
+            height: squareWidth,
+            backgroundImage: `url(/img/chesspieces/${piece}.png)`,
+            backgroundSize: "100%"
+          }}
+        />
+      );
+    });
+    return pieceComponents;
+  }, []);
+
   return (
-      <Chessboard 
-      position={game.fen()}
-      onPieceDrop ={onDrop}
-      boardWidth={550}
-      customBoardStyle={{
-        borderRadius: '10px',
-        boxShadow: '0px 5px 15px rgba(0,0,0,0.5)',
-      }}
-      customDarkSquareStyle={{ backgroundColor: '#EBECD0', color: '#779556' }} // Dark square color
-      customLightSquareStyle={{ backgroundColor: '#779556', color: '#EBECD0' }} // Light square color
-      />
+    <Chessboard position={game.fen()} onPieceDrop={onDrop} boardWidth={550} 
+    customBoardStyle={{
+      borderRadius: "4px",
+      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)"
+    }} 
+    customDarkSquareStyle={{
+      backgroundColor: "#779952"
+    }} 
+    customLightSquareStyle={{
+      backgroundColor: "#edeed1"
+    }}
+    customPieces={customPieces}/>
   );
 }
-
-export default RandomMoveGenerator;

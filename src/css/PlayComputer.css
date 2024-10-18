@@ -1,0 +1,75 @@
+/* PlayVsStockfish.css */
+.board-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 170px;
+  gap: 30px;
+}
+
+.button-container{
+  max-width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button {
+  width: 300px;
+  height: 75px;
+  border-radius: 5pt;
+  font-size: 22px;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border: 2px solid black;
+  cursor: pointer;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
+}
+
+#button-easy🤓{
+  background-color: #779952;
+}
+
+#button-medium🧐{
+  background-color: orange;
+}
+
+#button-hard😵{
+  background-color: orangered;
+
+}
+
+#button-new, #button-undo{
+  background-color: #3f3e3a;
+}
+
+#button-new:hover, #button-undo:hover{
+  background-color: #454444;
+}
+
+#button-easy🤓.button-active{
+  border: 10px solid darkgreen;
+}
+
+#button-medium🧐.button-active{
+  border: 10px solid rgb(232, 127, 6);
+}
+
+#button-hard😵.button-active{
+  border: 10px solid brown;
+}
+
+.custom-board {
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.custom-dark-square {
+  background-color: #779952;
+}
+
+.custom-light-square {
+  background-color: #edeed1;
+}
