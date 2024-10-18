@@ -14,7 +14,9 @@ function About() {
 function Home(){
   return (
     <div id="main">
-        <PlayRandomMove/>
+        <div>
+          <PlayRandomMove/>
+        </div>
         <About/>
     </div>
   );

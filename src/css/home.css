@@ -7,7 +7,7 @@
 }
 
 #about{
-    max-width: 490px;
+    width: 490px;
     height: 490px;
     display: flex;
     background-color: #21201d;
@@ -19,7 +19,7 @@
     padding: 30px;
     box-shadow: 10px 8px 0 0 rgba(0,0,0,0.5);
     transition: 0.3s ease;
-    }
+}
 
 #about:hover {
     box-shadow: 12px 14px 0 0 rgba(0,0,0,0.6);
